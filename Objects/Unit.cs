@@ -352,7 +352,7 @@ namespace itp380.Objects
             }
             if (Flying)
             {
-                if (Bombs >= 0)
+                if (Bombs > 0)
                 {
                     // flying, so release missile
                     GameState.Get().SpawnMissile(m_Team, Position);
