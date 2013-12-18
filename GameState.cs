@@ -254,7 +254,7 @@ namespace itp380
             }
             else if (m_NextState == eGameState.LevelEditor)
             {
-                SpawnUnit(eTeam.Jedi, SpawnUnitRandomPos(eTeam.Jedi), (float)(m_Random.NextDouble() * Math.PI * 2));
+                SpawnUnit(eTeam.Jedi, Vector3.Zero, 0);
                 LevelEditor.Get().addObject(m_Units[0]);
             }
             m_Player = m_Units[0];
