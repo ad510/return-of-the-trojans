@@ -35,7 +35,7 @@ namespace itp380.UI
             Point vPos = new Point();
             vPos.X = (int)(GraphicsManager.Get().Width / 4.0f);
             vPos.Y = (int)(GraphicsManager.Get().Height - 100f);
-            m_Buttons.AddLast(new Button(vPos, "S.Point Jedi",
+            /*m_Buttons.AddLast(new Button(vPos, "S.Point Jedi",
                 m_FixedFont, Color.WhiteSmoke,
                 Color.Yellow, SpawnJediUnit, eButtonAlign.Center));
 
@@ -45,7 +45,7 @@ namespace itp380.UI
                 m_FixedFont, Color.WhiteSmoke,
                 Color.Yellow, SpawnSithUnit, eButtonAlign.Center));
 
-            vPos.X += 200;
+            vPos.X += 200;*/
 
             m_Buttons.AddLast(new Button(vPos, "Building",
                 m_FixedFont, Color.WhiteSmoke,
@@ -53,15 +53,15 @@ namespace itp380.UI
 
             vPos.X += 200;
 
-            m_Buttons.AddLast(new Button(vPos, "Save",
-                m_FixedFont, Color.WhiteSmoke,
-                Color.Yellow, SaveFile, eButtonAlign.Center));
-
-            vPos.Y -= 100;
-
             m_Buttons.AddLast(new Button(vPos, "Building 2",
                 m_FixedFont, Color.WhiteSmoke,
                 Color.Yellow, SpawnBuilding2, eButtonAlign.Center));
+
+            vPos.X += 200;
+
+            m_Buttons.AddLast(new Button(vPos, "Save",
+                m_FixedFont, Color.WhiteSmoke,
+                Color.Yellow, SaveFile, eButtonAlign.Center));
         }
 
         public void SpawnBuilding()
