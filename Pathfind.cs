@@ -68,60 +68,8 @@ namespace itp380
             LinkedList<Node> OpenNodes = new LinkedList<Node>();
             LinkedList<Node> ClosedNodes = new LinkedList<Node>();
             int i, j;
-            // initialize nodes
-            for (i = 0; i < GridWidth; i++)
-            {
-                for (j = 0; j < GridHeight; j++)
-                {
-                    Nodes[i, j] = new Node(new Vector2(i, j), Vector2.Distance(new Vector2(Start.X, Start.Y), new Vector2(i, j)));
-                }
-            }
-            // find adjacent nodes for each node
-            for (i = 0; i < GridWidth; i++)
-            {
-                for (j = 0; j < GridHeight; j++)
-                {
-                    bool left = false, right = false, above = false, below = false;
-                    if (i > 0 && !Occupied[i - 1, j])
-                    {
-                        Nodes[i, j].AdjacentNodes.Add(Nodes[i - 1, j]);
-                        left = true;
-                    }
-                    if (i < GridWidth - 1 && !Occupied[i + 1, j])
-                    {
-                        Nodes[i, j].AdjacentNodes.Add(Nodes[i + 1, j]);
-                        right = true;
-                    }
-                    if (j > 0 && !Occupied[i, j - 1])
-                    {
-                        Nodes[i, j].AdjacentNodes.Add(Nodes[i, j - 1]);
-                        above = true;
-                    }
-                    if (j < GridHeight - 1 && !Occupied[i, j + 1])
-                    {
-                        Nodes[i, j].AdjacentNodes.Add(Nodes[i, j + 1]);
-                        below = true;
-                    }
-                    if (left && above && !Occupied[i - 1, j - 1])
-                    {
-                        Nodes[i, j].AdjacentNodes.Add(Nodes[i - 1, j - 1]);
-                    }
-                    if (right && above && !Occupied[i + 1, j - 1])
-                    {
-                        Nodes[i, j].AdjacentNodes.Add(Nodes[i + 1, j - 1]);
-                    }
-                    if (left && below && !Occupied[i - 1, j + 1])
-                    {
-                        Nodes[i, j].AdjacentNodes.Add(Nodes[i - 1, j + 1]);
-                    }
-                    if (right && below && !Occupied[i + 1, j + 1])
-                    {
-                        Nodes[i, j].AdjacentNodes.Add(Nodes[i + 1, j + 1]);
-                    }
-                }
-            }
-            // add end goal to open list
-            OpenNodes.AddLast(Nodes[End.X, End.Y]);
+            // initialize end node, and add it to open list
+            OpenNodes.AddLast(AddNode(End, Start, ref Nodes));
             // the heart of the A* algorithm
             // I implemented this from memory, so it looks a little different from the professor's pseudocode
             while (OpenNodes.Count > 0)
@@ -131,13 +79,18 @@ namespace itp380
                 OpenNodes.RemoveFirst();
                 ClosedNodes.AddLast(CurrentNode);
                 // if reached start node then exit
-                if (CurrentNode == Nodes[Start.X, Start.Y])
+                if (Nodes[Start.X, Start.Y] != null)
                 {
                     break;
                 }
                 // calculate cost to adjacent nodes, if less than current cost then add them to open list sorted by estimated total cost
-                foreach (Node AdjacentNode in CurrentNode.AdjacentNodes)
+                foreach (Point AdjacentNodePos in CurrentNode.AdjacentNodes)
                 {
+                    if (Nodes[AdjacentNodePos.X, AdjacentNodePos.Y] == null)
+                    {
+                        AddNode(AdjacentNodePos, Start, ref Nodes); // if node here hasn't been made yet, make it now
+                    }
+                    Node AdjacentNode = Nodes[AdjacentNodePos.X, AdjacentNodePos.Y];
                     float NewCostSoFar = CurrentNode.CostSoFar + Vector2.Distance(AdjacentNode.GridPos, CurrentNode.GridPos);
                     if ((AdjacentNode.Parent == null || NewCostSoFar < AdjacentNode.CostSoFar)
                         && (AdjacentNode.GridPos.X != End.X || AdjacentNode.GridPos.Y != End.Y))
@@ -199,6 +152,50 @@ namespace itp380
                 return Nodes[Start.X, Start.Y];
             }
             return null;
+        }
+
+        private Node AddNode(Point Pos, Point Start, ref Node[,] Nodes)
+        {
+            Nodes[Pos.X, Pos.Y] = new Node(new Vector2(Pos.X, Pos.Y), Vector2.Distance(new Vector2(Start.X, Start.Y), new Vector2(Pos.X, Pos.Y)));
+            // find adjacent nodes
+            bool left = false, right = false, above = false, below = false;
+            if (Pos.X > 0 && !Occupied[Pos.X - 1, Pos.Y])
+            {
+                Nodes[Pos.X, Pos.Y].AdjacentNodes.Add(new Point(Pos.X - 1, Pos.Y));
+                left = true;
+            }
+            if (Pos.X < GridWidth - 1 && !Occupied[Pos.X + 1, Pos.Y])
+            {
+                Nodes[Pos.X, Pos.Y].AdjacentNodes.Add(new Point(Pos.X + 1, Pos.Y));
+                right = true;
+            }
+            if (Pos.Y > 0 && !Occupied[Pos.X, Pos.Y - 1])
+            {
+                Nodes[Pos.X, Pos.Y].AdjacentNodes.Add(new Point(Pos.X, Pos.Y - 1));
+                above = true;
+            }
+            if (Pos.Y < GridHeight - 1 && !Occupied[Pos.X, Pos.Y + 1])
+            {
+                Nodes[Pos.X, Pos.Y].AdjacentNodes.Add(new Point(Pos.X, Pos.Y + 1));
+                below = true;
+            }
+            if (left && above && !Occupied[Pos.X - 1, Pos.Y - 1])
+            {
+                Nodes[Pos.X, Pos.Y].AdjacentNodes.Add(new Point(Pos.X - 1, Pos.Y - 1));
+            }
+            if (right && above && !Occupied[Pos.X + 1, Pos.Y - 1])
+            {
+                Nodes[Pos.X, Pos.Y].AdjacentNodes.Add(new Point(Pos.X + 1, Pos.Y - 1));
+            }
+            if (left && below && !Occupied[Pos.X - 1, Pos.Y + 1])
+            {
+                Nodes[Pos.X, Pos.Y].AdjacentNodes.Add(new Point(Pos.X - 1, Pos.Y + 1));
+            }
+            if (right && below && !Occupied[Pos.X + 1, Pos.Y + 1])
+            {
+                Nodes[Pos.X, Pos.Y].AdjacentNodes.Add(new Point(Pos.X + 1, Pos.Y + 1));
+            }
+            return Nodes[Pos.X, Pos.Y];
         }
 
         public Point BoundedGridPos(Point GridPos)

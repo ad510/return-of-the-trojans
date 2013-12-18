@@ -8,7 +8,7 @@ namespace itp380
 {
     public class Node
     {
-        public List<Node> AdjacentNodes = new List<Node>();
+        public List<Point> AdjacentNodes = new List<Point>();
         public Vector2 GridPos;
         public Node Parent = null;
         public float CostSoFar;
