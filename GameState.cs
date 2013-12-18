@@ -321,6 +321,7 @@ namespace itp380
                             if (Vector3.DistanceSquared(m_Units[i].Position, m_Units[j].Position) <= Objects.Unit.Radius * Objects.Unit.Radius)
                             {
                                 Vector3 diff = m_Units[i].Position - m_Units[j].Position;
+                                diff.Z = 0;
                                 m_Units[i].Position += diff * (Objects.Unit.Radius - diff.Length()) / 2;
                                 m_Units[j].Position -= diff * (Objects.Unit.Radius - diff.Length()) / 2;
                                 m_Units[i].UpdateLegs();
