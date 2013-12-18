@@ -55,10 +55,10 @@ namespace itp380
             // Music
             m_Music.Add("Cantina", Content.Load<SoundEffect>("Sounds/song_cantina").CreateInstance());
             m_Music["Cantina"].Volume = 0.2f;
-            m_Music.Add("Duel", Content.Load<SoundEffect>("Sounds/song_duel_of_fates").CreateInstance());
+            /*m_Music.Add("Duel", Content.Load<SoundEffect>("Sounds/song_duel_of_fates").CreateInstance());
             m_Music["Duel"].Volume = 0.5f;
             m_Music.Add("StarWars", Content.Load<SoundEffect>("Sounds/song_star_wars_main").CreateInstance());
-            m_Music["StarWars"].Volume = 0.5f;
+            m_Music["StarWars"].Volume = 0.5f;*/
             m_Music.Add("Imperial", Content.Load<SoundEffect>("Sounds/song_imperial_march").CreateInstance());
             m_Music["Imperial"].Volume = 0.5f;
             foreach (SoundEffectInstance music in m_Music.Values)
