@@ -1,0 +1,30 @@
+Andrew:
+most gameplay logic
+	unit movement
+	shooting
+	win/lose conditions
+	initial flying implementation (Vansh did a lot of the refinements)
+collision detection/response
+unit AI
+	pathfinding (with path smoothing)
+
+Vansh:
+level editor
+	loading & saving files
+flying refinements (Andrew wrote the initial implementation)
+	flying AI
+	bomb limits
+	camera adjustments for flying (Zachary also did this)
+multiple building types
+finding models online, exporting to FBX
+
+Zachary:
+making a really polished camera
+	spring camera
+	zoom camera for aiming
+	not moving into buildings
+radar for gameplay UI
+XBox controller integration
+crosshair
+sound, music
+instructions screen, status text
