@@ -52,7 +52,6 @@ namespace itp380
         Objects.Unit player; Vector3 playerForward, playerUp, playerPos, playerRight;
 
         Vector3 playerSkewUp = new Vector3(0, 0, 3.0f);
-        //Vector3 playerSkewUp = new Vector3(0, 0, 4.50f);
 
         // Camera Data
         public Vector3 cameraPos, cameraForward, cameraLeft, cameraUp;
@@ -260,6 +259,7 @@ namespace itp380
                 }
             }
         }
+
         public void ZoomOut()
         {
             if (cameraState != CameraState.isFlight && cameraState != CameraState.isStartingFlight)

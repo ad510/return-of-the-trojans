@@ -38,9 +38,7 @@ namespace itp380
 
         // Controller 
         A, B, X, Y, UpD, DownD, LeftD, RightD, LB, LT, RT,
-
         Controller_Zoom_In, Controller_Zoom_Out, // RB
-
         rightStick_R, rightStick_L, rightStick_U, rightStick_D, leftStick_R, leftStick_L, leftStick_U, leftStick_D,
         
 		NUM_BINDINGS
@@ -87,10 +85,8 @@ namespace itp380
             m_Bindings.Add(eBindings.Player_Arrow_Forward, new BindInfo(Keys.Up, eBindType.Held));
             m_Bindings.Add(eBindings.Player_Arrow_Back, new BindInfo(Keys.Down, eBindType.Held));
             m_Bindings.Add(eBindings.Player_Shoot, new BindInfo(Keys.Space, eBindType.JustPressed));
-
             m_Bindings.Add(eBindings.Player_Zoom_In, new BindInfo(Keys.Z, eBindType.JustPressed));
             m_Bindings.Add(eBindings.Player_Zoom_Out, new BindInfo(Keys.Z, eBindType.JustReleased));
-
             m_Bindings.Add(eBindings.Player_Board_Ship, new BindInfo(Keys.B, eBindType.JustPressed));
 		}
 
