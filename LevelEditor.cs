@@ -48,17 +48,15 @@ namespace itp380
 
         public void loadObjects()
         {
-            string[] items = new string[100];
-            int counter = 0;
+            List<string> items = new List<string>();
             string line;
             System.IO.StreamReader file = new System.IO.StreamReader("Content/Terrains/level_1.txt");
             while ((line = file.ReadLine()) != null)
             {
-                items[counter] = (line);
-                counter++;
+                items.Add(line);
             }
             file.Close();
-            for (int i = 0; i < counter; i++)
+            for (int i = 0; i < items.Count; i++)
             {
                 if (items[i].CompareTo("Building") == 0)
                 {
