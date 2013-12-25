@@ -117,7 +117,7 @@ namespace itp380
                     }
                 }
             }
-            if (Nodes[Start.X, Start.Y].Parent != null)
+            if (Nodes[Start.X, Start.Y] != null)
             {
                 // do path smoothing :)
                 for (Node CurrentNode = Nodes[Start.X, Start.Y]; CurrentNode != null; CurrentNode = CurrentNode.Parent)
