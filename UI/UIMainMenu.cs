@@ -41,58 +41,34 @@ namespace itp380.UI
                 m_ButtonFont, Color.Yellow,
                 Color.White, NewGameRandomMap, eButtonAlign.Center));
 
-            vPos.Y += 75;
-            m_Buttons.AddLast(new Button(vPos, "New Game - Crazy Battle",
-                m_ButtonFont, Color.Yellow,
-                Color.White, NewGameCrazyBattle, eButtonAlign.Center));
-
-            vPos.Y += 75;
+            vPos.Y += 90;
             m_Buttons.AddLast(new Button(vPos, "New Game - Custom Map",
                 m_ButtonFont, Color.Yellow,
                 Color.White, NewGameLevelEditorMap, eButtonAlign.Center));
 
-            vPos.Y += 75;
+            vPos.Y += 90;
             m_Buttons.AddLast(new Button(vPos, "Level Editor",
                 m_ButtonFont, Color.Yellow,
                 Color.White, LevelEditor, eButtonAlign.Center));
 
-			vPos.Y += 75;
+			vPos.Y += 90;
 			m_Buttons.AddLast(new Button(vPos, "Exit",
                 m_ButtonFont, Color.Yellow,
-				Color.White, Exit, eButtonAlign.Center));
+                Color.White, Exit, eButtonAlign.Center));
 		}
 
 		public void NewGameRandomMap()
 		{
 			SoundManager.Get().PlaySoundCue("MenuClick");
-
             GameState.Get().isRandomMapNotLevelMap = true;
-            GameState.Get().NumUnits = 10;
-            GameState.Get().NumStockpileUnits = 20;
-
-			GameState.Get().SetState(eGameState.Gameplay);
+            GameState.Get().ShowBattleMenu();
 		}
-
-        public void NewGameCrazyBattle()
-        {
-            SoundManager.Get().PlaySoundCue("MenuClick");
-
-            GameState.Get().isRandomMapNotLevelMap = true;
-            GameState.Get().NumUnits = 50;
-            GameState.Get().NumStockpileUnits = 200;
-
-            GameState.Get().SetState(eGameState.Gameplay);
-        }
 
         public void NewGameLevelEditorMap()
         {
             SoundManager.Get().PlaySoundCue("MenuClick");
-
             GameState.Get().isRandomMapNotLevelMap = false;
-            GameState.Get().NumUnits = 10;
-            GameState.Get().NumStockpileUnits = 20;
-
-            GameState.Get().SetState(eGameState.Gameplay);
+            GameState.Get().ShowBattleMenu();
         }
 
         public void LevelEditor()

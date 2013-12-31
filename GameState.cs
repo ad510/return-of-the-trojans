@@ -755,6 +755,11 @@ namespace itp380
 			m_UIStack.Push(new UI.UIPauseMenu(m_Game.Content));
 		}
 
+        public void ShowBattleMenu()
+        {
+            m_UIStack.Push(new UI.UIBattleMenu(m_Game.Content));
+        }
+
 		public void Exit()
 		{
 			m_Game.Exit();

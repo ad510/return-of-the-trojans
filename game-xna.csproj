@@ -130,6 +130,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SoundManager.cs" />
     <Compile Include="UI\Button.cs" />
+    <Compile Include="UI\UIBattleMenu.cs" />
     <Compile Include="UI\UIGameOver.cs" />
     <Compile Include="UI\UIGameplay.cs" />
     <Compile Include="UI\UIHowToPlay.cs" />
