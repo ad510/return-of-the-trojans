@@ -17,18 +17,18 @@ namespace itp380
 {
 	public static class GlobalDefines
 	{
-		public static int iMouseCursorSize = 32;
-		public static float fMouseDefaultSpeed = 1.2f;
-		public static float fCameraZoom = 20.0f;
+        public const int iMouseCursorSize = 32;
+        public const float fMouseDefaultSpeed = 1.2f;
+        public const float fCameraZoom = 20.0f;
 
-		public static bool bVSync = true;
+        public const bool bVSync = true;
 
         // Enable For Full Screen Later
-		public static bool bFullScreen = true;
+        public const bool bFullScreen = true;
 
 		// Windowed resolution -- in full screen mode, it automatically
 		// selects the desktop resolution.
-		public static int WindowedWidth = 1024;
-		public static int WindowHeight = 768;
+        public const int WindowedWidth = 1024;
+        public const int WindowHeight = 768;
 	}
 }

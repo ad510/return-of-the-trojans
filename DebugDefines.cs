@@ -16,11 +16,11 @@ namespace itp380
 {
 	public static class DebugDefines
 	{
-		public static bool bDrawButtonBounds = false;
-		public static bool bShowFPS = false;
-		public static bool bShowBuildString = false;
-		public static bool bShowWindowsMouseCursor = true;
-		public static bool bShowGlobalPath = true;
-		public static string DebugName = "Return of the Trojans";
+		public const bool bDrawButtonBounds = false;
+        public const bool bShowFPS = false;
+        public const bool bShowBuildString = false;
+        public const bool bShowWindowsMouseCursor = true;
+        public const bool bShowGlobalPath = true;
+        public const string DebugName = "Return of the Trojans";
 	}
 }
