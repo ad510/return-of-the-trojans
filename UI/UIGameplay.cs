@@ -116,7 +116,7 @@ namespace itp380.UI
         Objects.Unit player; Vector2 playerForward, playerPos;
         //float radarPixelRadius = 90.0f;
         float radarPixelRadius = 90.0f * 1.5f;
-        float radarScreenRange = 12000.0f;
+        float radarScreenRange = 110.0f;
 
         public void DrawRadarOnScreen(float fDeltaTime, SpriteBatch DrawBatch)
         {
@@ -189,7 +189,7 @@ namespace itp380.UI
         {
             Vector2 relativePosition = originalPos - playerPos;
 
-            float magnitude = (relativePosition.X * relativePosition.X + relativePosition.Y * relativePosition.Y) / radarScreenRange;
+            float magnitude = relativePosition.Length() / radarScreenRange;
 
             if (magnitude < 1.0f)
             {
