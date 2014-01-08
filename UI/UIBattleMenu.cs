@@ -51,8 +51,6 @@ namespace itp380.UI
 			m_Buttons.AddLast(new Button(vPos, "Cancel",
                 m_ButtonFont, new Color(0, 0, 200),
                 Color.White, Cancel, eButtonAlign.Center));
-
-			SoundManager.Get().PlaySoundCue("MenuClick");
 		}
 
 		public void NormalBattle()

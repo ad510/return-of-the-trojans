@@ -65,6 +65,7 @@ namespace itp380.UI
         {
             GameState.Get().isInGameHowToPlay = true;
             GameState.Get().ShowHowToPlay();
+            SoundManager.Get().PlaySoundCue("MenuClick");
         }
 
 		public void Quit()
